@@ -1,0 +1,262 @@
+<header class="text-center mb-8 p-6 rounded-xl header-gradient text-white shadow-lg flex flex-col items-center">
+    <img src="logo.png" alt="Logo da Igreja Tempo de Renovação" class="mb-4" style="max-width: 150px; height: auto;">
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-2">Minhas Férias com a Bíblia</h1>
+    <p class="text-xl sm:text-2xl font-light">Igreja Tempo de Renovação</p>
+    <p class="text-lg sm:text-xl mt-4">Sabedoria e Obediência</p>
+</header>
+
+<main class="card-container">
+    </main>
+
+<div class="flex justify-center items-center gap-4 mt-8 mb-4">
+    <button id="prevBtn" class="nav-button">Anterior</button>
+    <span id="dayCounter" class="text-xl font-semibold text-gray-700">Dia 1 de 27</span>
+    <button id="nextBtn" class="nav-button">Próximo</button>
+</div>
+
+<footer class="text-center mt-auto p-4 text-gray-600 text-sm">
+    <p>© 2025 Igreja Tempo de Renovação. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    const activities = [
+        // Dia 1
+        {
+            day: 1, date: "05/07/2025", verse: "Confia no Senhor de todo o teu coração.", reference: "Provérbios 3:5",
+            children: "Copiar o versículo e fazer um desenho sobre ele.",
+            adolescents: "Crie um 'Mural da Confiança' digital (usando apps como Canva ou Google Jamboard) ou físico. Escreva o versículo no centro e adicione palavras-chave, desenhos ou fotos que representem o que significa confiar em Deus em diferentes áreas da vida (estudos, amizades, futuro). Compartilhe com alguém da sua família ou com um amigo."
+        },
+        // Dia 2
+        {
+            day: 2, date: "06/07/2025", verse: "Sobre tudo o que se deve guardar, guarda o teu coração.", reference: "Provérbios 4:23",
+            children: "Copiar o versículo e memorizar para recitar para os pais.",
+            adolescents: "Pense em uma situação recente em que você precisou 'guardar seu coração' (ex: evitar fofocas, resistir a uma tentação, perdoar alguém). Escreva um pequeno parágrafo ou grave um áudio curto (até 1 minuto) sobre como você aplicou (ou poderia ter aplicado) o versículo nessa situação. Se quiser, compartilhe com seu líder ou um amigo de confiança."
+        },
+        // Dia 3
+        {
+            day: 3, date: "07/07/2025", verse: "O temor do Senhor é o princípio da sabedoria.", reference: "Provérbios 9:10",
+            children: "Copiar o versículo e orar com os pais sobre o tema.",
+            adolescents: "Entreviste um adulto da sua igreja ou família que você admira pela sabedoria. Pergunte a ele(a) como o 'temor do Senhor' influencia suas decisões e sua vida. Anote 3 insights importantes que você aprendeu e pense em como pode aplicá-los."
+        },
+        // Dia 4
+        {
+            day: 4, date: "08/07/2025", verse: "Ouve, filho meu, a instrução de teu pai.", reference: "Provérbios 1:8",
+            children: "Copiar o versículo e conversar com os pais sobre o que entendeu.",
+            adolescents: "Pense em um conselho importante que você recebeu de seus pais ou de uma figura de autoridade na igreja. Como esse conselho te ajudou ou pode te ajudar no futuro? Escreva um pequeno agradecimento ou um compromisso de aplicar esse conselho."
+        },
+        // Dia 5
+        {
+            day: 5, date: "09/07/2025", verse: "Quem anda com os sábios será sábio.", reference: "Provérbios 13:20",
+            children: "Copiar o versículo e fazer um cartão de gratidão.",
+            adolescents: "Identifique alguém em sua vida (amigo, familiar, líder) que te inspira a ser mais sábio ou a crescer na fé. Escreva uma mensagem de agradecimento a essa pessoa, destacando como a influência dela te ajuda a 'andar com os sábios'. Envie a mensagem!"
+        },
+        // Dia 6
+        {
+            day: 6, date: "10/07/2025", verse: "A resposta branda desvia o furor.", reference: "Provérbios 15:1",
+            children: "Copiar o versículo e escolher um louvor para cantar com os pais.",
+            adolescents: "Pense em uma situação em que uma 'resposta branda' poderia ter mudado o resultado de uma discussão ou desentendimento. Crie um pequeno roteiro (com diálogos) de como você agiria diferente da próxima vez, aplicando o versículo. Se possível, encene com alguém da sua família."
+        },
+        // Dia 7
+        {
+            day: 7, date: "11/07/2025", verse: "Filhos, obedecei a vossos pais no Senhor.", reference: "Efésios 6:1",
+            children: "Copiar o versículo e dramatizar em casa com a família.",
+            adolescents: "Escolha uma tarefa ou responsabilidade em casa que você pode fazer para demonstrar obediência e ajudar seus pais. Realize essa tarefa com excelência e sem ser pedido. Depois, reflita sobre como essa atitude impacta o ambiente familiar."
+        },
+        // Dia 8
+        {
+            day: 8, date: "12/07/2025", verse: "O temor do Senhor é o princípio da sabedoria.", reference: "Salmos 111:10",
+            children: "Copiar o versículo e fazer um desenho sobre ele.",
+            adolescents: "Pesquise brevemente (online ou em livros) sobre uma figura bíblica (ex: Salomão, Daniel, José) que demonstrou sabedoria através do temor a Deus. Escreva um parágrafo curto sobre o que você aprendeu com a vida dessa pessoa e como isso se conecta ao versículo."
+        },
+        // Dia 9
+        {
+            day: 9, date: "13/07/2025", verse: "Se algum de vós tem falta de sabedoria, peça a Deus.", reference: "Tiago 1:5",
+            children: "Copiar o versículo e memorizar para recitar para os pais.",
+            adolescents: "Identifique uma área da sua vida onde você sente que precisa de mais sabedoria (ex: decisões sobre o futuro, lidar com desafios na escola, amizades). Escreva uma oração específica pedindo a Deus por sabedoria nessa área. Comprometa-se a orar isso diariamente por uma semana."
+        },
+        // Dia 10
+        {
+            day: 10, date: "14/07/2025", verse: "Quem ama a disciplina ama o conhecimento.", reference: "Provérbios 12:1",
+            children: "Copiar o versículo e orar com os pais sobre o tema.",
+            adolescents: "Escolha uma nova disciplina que você gostaria de desenvolver (ex: ler a Bíblia diariamente, praticar um instrumento, aprender algo novo). Crie um pequeno plano de 3 passos para começar a praticar essa disciplina e um objetivo para o final da semana. Compartilhe seu plano com um amigo para te incentivar!"
+        },
+        // Dia 11
+        {
+            day: 11, date: "15/07/2025", verse: "Confia no Senhor de todo o teu coração.", reference: "Provérbios 3:5",
+            children: "Copiar o versículo e conversar com os pais sobre o que entendeu.",
+            adolescents: "Pense em um desafio atual que você está enfrentando e como a confiança em Deus pode te ajudar a superá-lo. Escreva um 'diário de gratidão' de 3 itens, agradecendo a Deus por algo relacionado a esse desafio ou à sua capacidade de confiar Nele."
+        },
+        // Dia 12
+        {
+            day: 12, date: "16/07/2025", verse: "Sobre tudo o que se deve guardar, guarda o teu coração.", reference: "Provérbios 4:23",
+            children: "Copiar o versículo e fazer um cartão de gratidão.",
+            adolescents: "Crie uma 'playlist de proteção' com louvores que te ajudem a manter o coração focado em Deus e a resistir a influências negativas. Compartilhe essa playlist com um amigo e expliquem um ao outro por que escolheram essas músicas."
+        },
+        // Dia 13
+        {
+            day: 13, date: "17/07/2025", verse: "O temor do Senhor é o princípio da sabedoria.", reference: "Provérbios 9:10",
+            children: "Copiar o versículo e escolher um louvor para cantar com os pais.",
+            adolescents: "Pense em uma situação em que você precisou tomar uma decisão importante. Como o 'temor do Senhor' (respeito e reverência a Ele) influenciou ou poderia ter influenciado essa decisão? Escreva um pequeno texto ou grave um áudio sobre sua reflexão."
+        },
+        // Dia 14
+        {
+            day: 14, date: "18/07/2025", verse: "Ouve, filho meu, a instrução de teu pai.", reference: "Provérbios 1:8",
+            children: "Copiar o versículo e dramatizar em casa com a família.",
+            adolescents: "Proponha uma 'noite de conselhos' em família. Peça aos seus pais ou responsáveis para compartilharem uma lição de vida importante que aprenderam. Anote os conselhos e discuta como eles se relacionam com o versículo."
+        },
+        // Dia 15
+        {
+            day: 15, date: "19/07/2025", verse: "Quem anda com os sábios será sábio.", reference: "Provérbios 13:20",
+            children: "Copiar o versículo e fazer um desenho sobre ele.",
+            adolescents: "Identifique um personagem bíblico que você considera sábio (ex: Daniel, Ester, Noemi). Pesquise sobre a vida dele e como suas escolhas refletiram sabedoria. Crie um pequeno 'perfil' desse personagem destacando 3 características de sabedoria."
+        },
+        // Dia 16
+        {
+            day: 16, date: "20/07/2025", verse: "A resposta branda desvia o furor.", reference: "Provérbios 15:1",
+            children: "Copiar o versículo e memorizar para recitar para os pais.",
+            adolescents: "Pense em uma situação de conflito (real ou hipotética) e pratique como você daria uma 'resposta branda'. Você pode simular a conversa com um espelho ou com um amigo, focando em palavras que acalmam e buscam a paz."
+        },
+        // Dia 17
+        {
+            day: 17, date: "21/07/2025", verse: "Filhos, obedecei a vossos pais no Senhor.", reference: "Efésios 6:1",
+            children: "Copiar o versículo e orar com os pais sobre o tema.",
+            adolescents: "Crie uma lista de 3 maneiras práticas de demonstrar obediência e respeito aos seus pais ou responsáveis esta semana. Escolha uma delas e coloque em prática hoje, observando a reação e o impacto no relacionamento."
+        },
+        // Dia 18
+        {
+            day: 18, date: "22/07/2025", verse: "O temor do Senhor é o princípio da sabedoria.", reference: "Salmos 111:10",
+            children: "Copiar o versículo e conversar com os pais sobre o que entendeu.",
+            adolescents: "Escreva um pequeno poema, uma música ou uma frase criativa que expresse o que 'o temor do Senhor' significa para você e como ele te guia para a sabedoria."
+        },
+        // Dia 19
+        {
+            day: 19, date: "23/07/2025", verse: "Se algum de vós tem falta de sabedoria, peça a Deus.", reference: "Tiago 1:5",
+            children: "Copiar o versículo e fazer um cartão de gratidão.",
+            adolescents: "Desafie-se a orar por sabedoria antes de tomar qualquer decisão importante hoje, seja pequena (o que vestir, o que comer) ou grande. Anote como essa prática te ajudou a pensar de forma diferente."
+        },
+        // Dia 20
+        {
+            day: 20, date: "24/07/2025", verse: "Quem ama a disciplina ama o conhecimento.", reference: "Provérbios 12:1",
+            children: "Copiar o versículo e escolher um louvor para cantar com os pais.",
+            adolescents: "Escolha um novo livro (bíblico ou cristão) ou um podcast sobre um tema que você queira aprender mais. Dedique 15-20 minutos hoje para começar a ler/ouvir e anote uma frase ou ideia principal que você aprendeu."
+        },
+        // Dia 21
+        {
+            day: 21, date: "25/07/2025", verse: "Confia no Senhor de todo o teu coração.", reference: "Provérbios 3:5",
+            children: "Copiar o versículo e dramatizar em casa com a família.",
+            adolescents: "Crie um pequeno vídeo (de 30 segundos a 1 minuto) ou um post para redes sociais (sem postar, apenas criar o rascunho) com uma mensagem de encorajamento sobre confiar em Deus, usando o versículo como base. Use elementos visuais e música se quiser."
+        },
+        // Dia 22
+        {
+            day: 22, date: "26/07/2025", verse: "Sobre tudo o que se deve guardar, guarda o teu coração.", reference: "Provérbios 4:23",
+            children: "Copiar o versículo e fazer um desenho sobre ele.",
+            adolescents: "Reflita sobre as coisas que você permite entrar no seu coração (músicas, filmes, conversas, redes sociais). Faça uma lista de 3 coisas que você pode 'filtrar' ou reduzir para proteger seu coração e manter o foco em Deus."
+        },
+        // Dia 23
+        {
+            day: 23, date: "27/07/2025", verse: "O temor do Senhor é o princípio da sabedoria.", reference: "Provérbios 9:10",
+            children: "Copiar o versículo e memorizar para recitar para os pais.",
+            adolescents: "Pense em uma área da sua vida onde você está buscando sabedoria (ex: escolha de carreira, faculdade, amizades). Escreva 3 perguntas que você faria a Deus sobre essa área, demonstrando seu 'temor' e dependência Dele."
+        },
+        // Dia 24
+        {
+            day: 24, date: "28/07/2025", verse: "Ouve, filho meu, a instrução de teu pai.", reference: "Provérbios 1:8",
+            children: "Copiar o versículo e orar com os pais sobre o tema.",
+            adolescents: "Crie um 'desafio da obediência' para si mesmo: escolha uma instrução ou regra que seus pais ou responsáveis estabeleceram e que você tem dificuldade em seguir. Comprometa-se a segui-la por 24 horas e anote como se sentiu."
+        },
+        // Dia 25 (Com filmes)
+        {
+            day: 25, date: "29/07/2025", verse: "Quem anda com os sábios será sábio.", reference: "Provérbios 13:20",
+            children: "Assistir ao filme '<a href=\"[https://youtu.be/-gp-6vwwOn8?si=5-Imy2zcFKixgB4](https://youtu.be/-gp-6vwwOn8?si=5-Imy2zcFKixgB4)_\" target=\"_blank\" class=\"text-blue-600 hover:underline\">Leão de Judá</a>' e conversar com os pais sobre obediência e confiança em Deus.",
+            adolescents: "Assista ao filme '<a href=\"[https://youtu.be/1xIIVcQYytk?si=E3H2iYYW9rTuxcbP](https://youtu.be/1xIIVcQYytk?si=E3H2iYYW9rTuxcbP)\" target=\"_blank\" class=\"text-blue-600 hover:underline\">Mãos Talentosas</a>'. Após o filme, identifique um 'sábio' (mentor, figura inspiradora) na vida do protagonista e reflita sobre como a influência dessa pessoa foi crucial para o sucesso dele. Escreva um plano de ação sobre como você pode buscar a companhia de pessoas sábias em sua própria vida e quais qualidades você procuraria em um mentor."
+        },
+        // Dia 26
+        {
+            day: 26, date: "30/07/2025", verse: "A resposta branda desvia o furor.", reference: "Provérbios 15:1",
+            children: "Copiar o versículo e fazer um cartão de gratidão.",
+            adolescents: "Pense em uma situação em que você se sentiu frustrado ou com raiva. Como você reagiu? Como você poderia ter aplicado o versículo para ter uma 'resposta branda'? Escreva uma carta (que você não precisa enviar) para a pessoa envolvida, praticando a 'resposta branda'."
+        },
+        // Dia 27
+        {
+            day: 27, date: "31/07/2025", verse: "Filhos, obedecei a vossos pais no Senhor.", reference: "Efésios 6:1",
+            children: "Copiar o versículo e escolher um louvor para cantar com os pais.",
+            adolescents: "Escreva uma 'carta de gratidão' para seus pais ou responsáveis, agradecendo por algo específico que eles te ensinaram ou por uma instrução que te ajudou. Entregue a carta a eles e observe a reação."
+        }
+    ];
+
+    let currentDayIndex = 0;
+    const cardContainer = document.querySelector('.card-container');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dayCounter = document.getElementById('dayCounter');
+
+    function createCard(activity) {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'card p-6 flex flex-col mx-auto'; // mx-auto for centering
+        cardDiv.innerHTML = `
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-3xl font-bold text-gray-800">Dia ${activity.day}</h2>
+                <span class="text-lg font-medium text-gray-600">${activity.date}</span>
+            </div>
+            <div class="verse-box p-4 rounded-lg mb-4">
+                <p class="text-base text-gray-700 italic">"${activity.verse}"</p>
+                <p class="text-sm font-semibold text-gray-600 mt-1">${activity.reference}</p>
+            </div>
+            <div class="activity-section p-4 rounded-lg mb-3 children-activity">
+                <h3 class="text-xl font-semibold text-green-800 mb-2">Para Crianças:</h3>
+                <p class="text-gray-700">${activity.children}</p>
+            </div>
+            <div class="activity-section p-4 rounded-lg adolescent-activity flex-grow">
+                <h3 class="text-xl font-semibold text-indigo-800 mb-2">Para Adolescentes:</h3>
+                <p class="text-gray-700">${activity.adolescents}</p>
+            </div>
+        `;
+        return cardDiv;
+    }
+
+    function renderCard() {
+        // Clear previous cards
+        cardContainer.innerHTML = '';
+
+        // Add the current card
+        const currentCard = createCard(activities\[currentDayIndex]);
+        cardContainer.appendChild(currentCard);
+        setTimeout(() => {
+            currentCard.classList.add('active');
+        }, 50); // Small delay to trigger transition
+
+        // Update day counter
+        dayCounter.textContent = `Dia ${activities\[currentDayIndex].day} de ${activities.length}`;
+
+        // Update button states
+        prevBtn.disabled = currentDayIndex === 0;
+        nextBtn.disabled = currentDayIndex === activities.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentDayIndex > 0) {
+            const currentCard = cardContainer.querySelector('.card.active');
+            if (currentCard) {
+                currentCard.classList.remove('active');
+                currentCard.classList.add('next'); // Animate out to the right
+            }
+            setTimeout(() => {
+                currentDayIndex--;
+                renderCard();
+            }, 300); // Wait for animation to finish
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentDayIndex < activities.length - 1) {
+            const currentCard = cardContainer.querySelector('.card.active');
+            if (currentCard) {
+                currentCard.classList.remove('active');
+                currentCard.classList.add('prev'); // Animate out to the left
+            }
+            setTimeout(() => {
+                currentDayIndex++;
+                renderCard();
+            }, 300); // Wait for animation to finish
+        }
+    });
